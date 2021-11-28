@@ -1,9 +1,5 @@
 environment:
-  nodejs_version: "16.9.1"
-
-branches:
-  only:
-    - release
+  nodejs_version: "16"
 
 install:
   - ps: Install-Product node $env:nodejs_version
@@ -11,4 +7,4 @@ install:
   - npm install
 
 build_script:
-  - node_modules/.bin/electron-builder build --x64 --ia32
+  - npm run test
