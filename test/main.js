@@ -9,11 +9,11 @@
 // const path = require('path')
 // const rimraf = require('rimraf')
 //
-// chai.should()
+//
 // chai.use(chaiAsPromised)
 // const timeout = process.env.CI ? 60000 : 10000
 //
-// describe('stretchly', function () {
+describe.skip('stretchly', function () {
 //   const tempDir = path.join(__dirname, './stretchly-test-tmp')
 //   const settings = new Store({
 //     cwd: path.join(__dirname),
@@ -175,4 +175,4 @@
 //       await this.app.stop()
 //     })
 //   })
-// })
+})

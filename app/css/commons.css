@@ -40,7 +40,7 @@
   font-weight: 300;
   font-display: swap;
   src: local('Noto Sans CJK KR Light'), local('NotoSansCJKkr-Light'),
-       url('./fonts/NotoSansCJKkr-Light.otf') format('truetype');
+       url('./fonts/NotoSansCJKkr-Light.otf') format('opentype');
 }
 
 @font-face {
@@ -124,6 +124,24 @@
        url('./fonts/NotoSansHebrew-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Noto Sans JP Light';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Noto Sans JP Light'), local('NotoSansJP-Light'),
+       url('./fonts/NotoSansCJKjp-Light.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Noto Sans JP Regular';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Noto Sans JP Regular'), local('NotoSansJP-Regular'),
+       url('./fonts/NotoSansCJKjp-Regular.otf') format('opentype');
+}
+
 body {
   background: var(--main-bg-color);
   color: var(--main-color);
@@ -131,13 +149,15 @@ body {
     'Noto Sans CJK KR Regular',
     'Noto Sans Devanagari Regular',
     'Noto Sans Gujarati Regular', 'Noto Sans Gurmukhi Regular',
-    'Noto Sans Hebrew Regular';
+    'Noto Sans Hebrew Regular',
+    'Noto Sans JP Regular';
 }
 
 .darwin .darwin-hidden,
 .linux .linux-hidden,
 .freebsd .linux-hidden,
-.openbsd .linux-hidden {
+.openbsd .linux-hidden,
+.store .store-hidden {
   display: none;
 }
 
@@ -147,9 +167,10 @@ a {
 
 /* https://css-tricks.com/html5-progress-element/ */
 progress {
+  appearance: none;
   -webkit-appearance: none;
   height: 6px;
-  width: 50vh;
+  width: min(50vw, 50vh);
 }
 
 progress[value]::-webkit-progress-bar {
@@ -308,6 +329,11 @@ body[dir=rtl] .has-select {
   right: 3px;
 }
 
+body[dir=rtl] .has-select::after {
+  left: 3px;
+  right: auto;
+}
+
 .has-select::before {
   background: var(--has-select-before-bg);
   border-radius: 0 3px 3px 0;
@@ -319,7 +345,13 @@ body[dir=rtl] .has-select {
   width: 16.5px;
 }
 
+body[dir=rtl] .has-select::before {
+  left: 0;
+  right: auto;
+}
+
 select {
+  appearance: none;
   -webkit-appearance: none;
   color: var(--select-color);
   background: var(--select-bg);
@@ -334,7 +366,7 @@ select {
 
 body[dir=rtl] select {
   padding-left: 0;
-  padding-right: 20px;
+  padding-right: 8px;
 }
 
 select option {
